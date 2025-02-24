@@ -7,6 +7,7 @@ com\anime\api\repository\ClipRepository.class
 com\anime\api\repository\AnimeRepository.class
 com\anime\api\repository\WallpaperRepository.class
 com\anime\api\service\AnimeService.class
+com\anime\api\config\CorsConfig.class
 com\anime\api\controller\AudioController.class
 com\anime\api\model\WallpaperModel.class
 com\anime\api\controller\EpisodeController.class

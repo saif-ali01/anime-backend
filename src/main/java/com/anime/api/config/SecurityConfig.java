@@ -20,21 +20,24 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Value("${security.user.name}") 
+    @Value("${security.user.name}")
     private String username;
 
-    @Value("${security.user.password}") 
+    @Value("${security.user.password}")
     private String password;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Disable CSRF for APIs
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(new AntPathRequestMatcher("/**", HttpMethod.GET.name())).permitAll() // Allow all GET requests
-                .anyRequest().authenticated() // Secure all other HTTP methods
-            )
-            .httpBasic(Customizer.withDefaults()); // Enable HTTP Basic Authentication
+                .cors(Customizer.withDefaults()) // Enable CORS
+                .csrf(csrf -> csrf.disable()) // Disable CSRF for APIs
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(new AntPathRequestMatcher("/**", HttpMethod.GET.name())).permitAll() // Allow
+                                                                                                              // all GET
+                                                                                                              // requests
+                        .anyRequest().authenticated() // Secure all other HTTP methods
+                )
+                .httpBasic(Customizer.withDefaults()); // Enable HTTP Basic Authentication
 
         return http.build();
     }
