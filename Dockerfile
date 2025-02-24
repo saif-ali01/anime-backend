@@ -4,8 +4,6 @@ FROM openjdk:17-jdk-slim
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the JAR file into the container
-COPY target/api-0.0.1-SNAPSHOT.jar app.jar
 # Copy the JAR file from the target directory to the container
 COPY target/api-0.0.1-SNAPSHOT.jar /app/api-0.0.1-SNAPSHOT.jar
 
